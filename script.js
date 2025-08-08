@@ -1,5 +1,5 @@
 
-// the computers choice
+// Define computers choice
 function getComputerChoice() {
     const choices ={
         0: "Rock",
@@ -10,31 +10,34 @@ function getComputerChoice() {
 
 
 }
-// The human/players choice
+// Define humans choice
 function getHumanChoice() {
     const choices = ["Rock", "Paper", "Scissors"];
     return prompt("Enter your choice (Rock, Paper, Scissors):");
 }
 
-// the results in console log
-console.log(getComputerChoice());
-console.log(getHumanChoice());
+// the results of the computer choice
 
-//the score
+
+
+//the score of the human and computer
 let Humanscore = 0;
 let Computerscore = 0;
 
+let humanChoice = getHumanChoice();    // We put the getHumanChoice functions result into a variable
+let computerChoice = getComputerChoice(); // We put the getComputerChoice functions result into a variable
 
-// *here we setup point system, and hiarchy of the game
-function determineWinner(getHumanChoice, getComputerChoice) {
-    if (getHumanChoice === getComputerChoice) {
+
+// Define game rules,
+function determineWinner(HumanChoice, ComputerChoice) {
+    if (HumanChoice === ComputerChoice) {
         return "tie";
-    } else if (getHumanChoice === "Rock" && getComputerChoice === "Scissors"){
+    } else if (HumanChoice === "Rock" && ComputerChoice === "Scissors") {
         return "Player Wins";
     }
-      else if (getHumanChoice === "Paper" && getComputerChoice === "Rock") {
+      else if (HumanChoice === "Paper" && ComputerChoice === "Rock") {
         return "Player Wins";
-    } else if (getHumanChoice === "Scissors" && getComputerChoice === "Paper") {
+    } else if (HumanChoice === "Scissors" && ComputerChoice === "Paper") {
         return "Player Wins";
     } else {
         return "Computer Wins";
@@ -43,9 +46,13 @@ function determineWinner(getHumanChoice, getComputerChoice) {
 
 }
 
-console.log(determineWinner(getHumanChoice, getComputerChoice));
 
-const winner = determineWinner(getHumanChoice(), getComputerChoice());
+console.log(humanChoice);   // We make the result of humanChoice appear in console
+console.log("Computer chose: " + computerChoice);
+
+let winner = determineWinner(humanChoice, computerChoice); // Use stored values
+console.log("Result: " + winner);
+
 
 function updateScore(winner) {
     if (winner === "Player Wins") {
@@ -54,6 +61,9 @@ function updateScore(winner) {
         Computerscore++;
     }
 }
+
+updateScore(winner);
+
 
 console.log("Human Score:" + Humanscore);
 console.log("Computer Score:" + Computerscore);
